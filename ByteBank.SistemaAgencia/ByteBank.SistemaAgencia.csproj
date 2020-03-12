@@ -49,8 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Estagiario.cs" />
+    <Compile Include="ExtratorValorDeArgumentosURL.cs" />
+    <Compile Include="IndexOF.cs" />
+    <Compile Include="IsNullOrEmpty.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Remove.cs" />
+    <Compile Include="Replace.cs" />
+    <Compile Include="SubString.cs" />
+    <Compile Include="teste\Replace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
