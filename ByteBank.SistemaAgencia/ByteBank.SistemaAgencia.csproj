@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClasseObject-ToString-MetodoEquals.cs" />
     <Compile Include="Estagiario.cs" />
+    <Compile Include="ExpressaoRegular.cs" />
     <Compile Include="ExtratorValorDeArgumentosURL.cs" />
     <Compile Include="IndexOF.cs" />
     <Compile Include="IsNullOrEmpty.cs" />

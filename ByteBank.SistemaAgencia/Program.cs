@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
 using Humanizer;
@@ -24,7 +26,14 @@ namespace ByteBank.SistemaAgencia
             //TesteReplace();
 
             //Testando StartsWith, EndsWith e Contains
-            TesteStartsWitheEndsWitheContains();
+            //TesteStartsWitheEndsWitheContains();
+
+            //TestandoExpressoesRegulares(); 
+
+            // TesteToString();
+
+            TesteEquals();
+
             Console.ReadLine();
             ExtratorValorDeArgumentosURL extratorDeValores = new ExtratorValorDeArgumentosURL(url);
 
@@ -116,7 +125,7 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine(teste);
         }
 
-        //Testandoo StartsWith e EndsWith
+        //Testandoo StartsWith, EndsWith e Contains.
         static void TesteStartsWitheEndsWitheContains()
         {
             string urlTeste = "https://www.bytebank.com/cambio";
@@ -135,11 +144,83 @@ namespace ByteBank.SistemaAgencia
             urlTeste.Contains("");
 
 
-            Console.WriteLine("Teste StartsTith: " + urlTeste.StartsWith("https://www.bytebank.com/cambio"));
+            Console.WriteLine("Teste StartsTith: " + urlTeste.StartsWith("https://www"));
             Console.WriteLine("Teste EndsWith: " + urlTeste.EndsWith("teste"));
             Console.WriteLine("Teste Contains: " + urlTeste.Contains("bytebank"));
-
             Console.WriteLine(urlTeste);
+        }
+
+        static void TestandoExpressoesRegulares()
+        {
+            //Me ligue em  7894 - 4654.
+            //Meu numero e telefone é 7894 - 4654.
+            //O número 7894 - 4654 é para contato profissional.
+
+            /*EXPRESSÃO REGULAR:
+                Seria extamente o que escrevi abaixo,aonde eu passo para o compilador o padrao(Regular) que desejo encontrar em uma string.*/
+
+
+            //string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]";
+            //OU
+            // string padrao = "[0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]";
+            //OU
+            // string padrao = "[0-9]{4}[-][0-9]{4}";   
+            //OU
+            //string padrao = "[0-9]{4,5}[-]{0,1}[0-9]{4}";  
+            //OU
+            //string padrao = "[0-9]{4,5}-{0,1}[0-9]{4}";
+            //OU
+            string padrao = "[0-9]{4,5}-?[0-9]{4}";
+
+            string textoTeste = "O número 97894-4654 é 9245-4795 para contato profissional.";  
+            
+
+            
+            Console.WriteLine(Regex.IsMatch(textoTeste, padrao));
+
+            Match resultado = Regex.Match(textoTeste, padrao);       
+           
+            Console.WriteLine(resultado.Value);
+
+
+
+
+        }
+
+        static void TesteToString()
+        {
+            ContaCorrente contaTeste = new ContaCorrente(1244, 45879);
+
+            //Retorna o ToStringdo objeto
+            Console.WriteLine(contaTeste);
+            contaTeste.Depositar(500);
+            string TesteToString = contaTeste.ToString();
+            Console.WriteLine(TesteToString);
+        
+        }
+
+        static void TesteEquals()
+        {
+            Cliente contaTeste = new Cliente();
+
+            contaTeste.Nome = "Anderson Gabriel";
+            contaTeste.CPF = "456.174.294-92";
+            contaTeste.Profissao = "Estagiario";
+
+            Cliente contaTeste2 = new Cliente();
+
+            contaTeste2.Nome = "Anderson Gabriel";
+            contaTeste2.CPF = "456.174.294-92";
+            contaTeste2.Profissao = "Estagiario";
+
+            if (contaTeste.Equals(contaTeste2))
+            {
+                Console.WriteLine("São Iguais!");
+            }
+            else
+            {
+                Console.WriteLine("Não são iguas!");
+            }
         }
     }       
 }           

@@ -111,6 +111,15 @@ namespace ByteBank.Modelos
 
             contaDestino.Depositar(valor);
         }
+
+        /// <summary>
+        /// Define o nome do objeto instanciado <see cref="ContaCorrente"/>
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"Numero {Numero}, Agência {Agencia}, Saldo {Saldo}";
+        }
     }
 
 }
