@@ -33,6 +33,8 @@ namespace ByteBank.SistemaAgencia
             // TesteToString();
 
             TesteEquals();
+            string teste;
+            teste.Equals();
 
             Console.ReadLine();
             ExtratorValorDeArgumentosURL extratorDeValores = new ExtratorValorDeArgumentosURL(url);
